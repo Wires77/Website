@@ -2,26 +2,6 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
-      options: {
-        separator: ';'
-      },
-      dist: {
-        src: ['src/**/*.js'],
-        dest: 'dist/<%= pkg.name %>.js'
-      }
-    },
-	clean: ['dist/<%= pkg.name %>.js'],
-    uglify: {
-      options: {
-        banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
-      },
-      dist: {
-        files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= concat.dist.dest %>']
-        }
-      }
-    },
 	bower_concat: {
 		all: {
 			dest: 'src/js/bower.js'
@@ -43,14 +23,21 @@ module.exports = function(grunt) {
       files: ['<%= jshint.files %>'],
       tasks: ['jshint']
     },
-	htmlbuild: {
-		src: 'src/index.html',
-		dest: 'dist/index.html',
+	useminPrepare: {
+		html: 'src/index.html',
 		options: {
-			scripts: {
-				main: '<%= pkg.name %>.min.js'
-			}
+			root: 'src',
+			dest: 'dist'
 		}
+	},
+	copy: {
+		main: {
+			src: 'src/index.html',
+			dest: 'dist/index.html'
+		}
+	},
+	usemin: {
+		html: 'dist/index.html'
 	}
   });
 
@@ -58,6 +45,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', ['jshint']);
 
-  grunt.registerTask('default', ['jshint', 'bower_concat', 'concat', 'uglify', 'clean', 'htmlbuild']);
+  grunt.registerTask('default', ['jshint', 'bower_concat', 'useminPrepare', 'concat:generated', 'uglify:generated', 'copy', 'usemin']);
 
 };
