@@ -1,0 +1,33 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Website built with html5, angular-js, bower, grunt",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wires77/Website.git"
+  },
+  "author": "Trevor Lund",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wires77/Website/issues"
+  },
+  "homepage": "https://github.com/Wires77/Website#readme",
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-bower-concat": "^0.5.0",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-html-build": "^0.5.0",
+    "load-grunt-tasks": "^3.2.0"
+  }
+}
