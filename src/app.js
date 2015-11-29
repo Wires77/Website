@@ -5,10 +5,17 @@ angular.module('Website', [
 	'websiteControllers'
 ]).
 config(['$routeProvider', function($routeProvider) {
-	$routeProvider.when('/dress', {
-		templateUrl: 'views/dress/dress.html',
-		controller: 'DressCtrl'
-	}).otherwise({redirectTo: '/dress'});
+	$routeProvider
+			.when('/dress', {
+				templateUrl: 'views/dress/dress.html',
+				controller: 'DressCtrl'
+			})
+			.when('/tripweather', {
+				templateUrl: 'views/TripWeather/tripweather.html',
+				controller: 'TripWeatherCtrl',
+				resolve    : googleMaps.resolver
+			})
+			.otherwise({redirectTo: '/dress'});
 }]);
 
 var controllers = angular.module('websiteControllers', []);
